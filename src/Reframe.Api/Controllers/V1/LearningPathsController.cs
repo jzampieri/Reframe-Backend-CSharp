@@ -67,6 +67,7 @@ namespace Reframe.Api.Controllers.V1
             return CreatedAtAction(nameof(GetByUser), new { userId = userId, version = "1.0" }, lp);
         }
 
+
         [HttpGet("user/{userId:int}")]
         public async Task<ActionResult<IEnumerable<LearningPath>>> GetByUser(int userId)
         {

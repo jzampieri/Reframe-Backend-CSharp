@@ -7,6 +7,7 @@ using Reframe.Api.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Reframe.Api.Infrastructure;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,13 @@ builder.Services.AddDbContext<ReframeDbContext>(options =>
     ));
 
 // Controllers
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 // API Versioning
 builder.Services.AddApiVersioning(options =>
