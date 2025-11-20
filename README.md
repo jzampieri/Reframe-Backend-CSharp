@@ -103,7 +103,7 @@ dotnet run
 Swagger disponível em:
 
 ```
-https://localhost:5001/swagger
+https://localhost:8080/swagger
 ```
 
 ---
@@ -149,7 +149,7 @@ A API utiliza versionamento por URL:
 | ------ | ---------------------------------------- |
 | POST   | `/api/v1/skills`                         |
 | GET    | `/api/v1/skills`                         |
-| POST   | `/api/v1/userskills` *(se implementado)* |
+| POST   | `/api/v1/userskills`                     |
 | GET    | `/api/v1/userskills/user/{id}`           |
 
 ---
@@ -257,3 +257,4 @@ Dúvidas ou sugestões? Entre em contato em: **[contact.zampieri@gmail.com](mail
 ---
 
 > *"Upskill, Reskill & Reframe your Future."*
+
