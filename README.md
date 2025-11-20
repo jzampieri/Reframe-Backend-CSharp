@@ -250,6 +250,14 @@ graph TD
 
 ---
 
+## Link Draw.io
+https://drive.google.com/file/d/1Kiqi4tdqd7GeyB64m3o3miTIjRPDRqfE/view?usp=sharing
+
+---
+
+## Link video de demonstração no youtube:
+https://youtu.be/Oe5xBBfY3us
+
 ##  Contato
 
 Dúvidas ou sugestões? Entre em contato em: **[contact.zampieri@gmail.com](mailto:contact.zampieri@gmail.com)**
@@ -257,5 +265,6 @@ Dúvidas ou sugestões? Entre em contato em: **[contact.zampieri@gmail.com](mail
 ---
 
 > *"Upskill, Reskill & Reframe your Future."*
+
 
 
