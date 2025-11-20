@@ -55,7 +55,7 @@ A versão acadêmica usa autenticação simplificada, mas a arquitetura está pr
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 * **.NET 8 – ASP.NET Core Web API**
 * **Entity Framework Core (SQL Server)**
@@ -75,14 +75,14 @@ A versão acadêmica usa autenticação simplificada, mas a arquitetura está pr
 ### 2. Criar o banco de dados
 
 ```sql
-CREATE DATABASE ReframeDb;
+CREATE DATABASE reframedb;
 ```
 
 ### 3. Configurar `appsettings.json`
 
 ```
 "ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=ReframeDb;Trusted_Connection=True;TrustServerCertificate=True"
+  "DefaultConnection": "Server=localhost;Port=3306;Database=reframedb;User=root;Password={senha}"
 }
 ```
 
@@ -200,7 +200,7 @@ Criado para incentivar **upskilling contínuo**.
 
 ---
 
-## 🖥 Diagrama da Arquitetura (Mermaid)
+##  Diagrama da Arquitetura 
 
 ```mermaid
 graph TD
@@ -257,4 +257,5 @@ Dúvidas ou sugestões? Entre em contato em: **[contact.zampieri@gmail.com](mail
 ---
 
 > *"Upskill, Reskill & Reframe your Future."*
+
 
