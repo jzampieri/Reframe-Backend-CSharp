@@ -4,12 +4,18 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Reframe.Api.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Reframe.Api.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // DbContext
 builder.Services.AddDbContext<ReframeDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ));
 
 // Controllers
 builder.Services.AddControllers();
@@ -23,7 +29,6 @@ builder.Services.AddApiVersioning(options =>
     options.ApiVersionReader = new UrlSegmentApiVersionReader();
 });
 
-// Explorer para o Swagger separar por versão
 builder.Services.AddVersionedApiExplorer(options =>
 {
     options.GroupNameFormat = "'v'VVV";
@@ -51,18 +56,22 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Reframe API v1");
-        options.SwaggerEndpoint("/swagger/v2/swagger.json", "Reframe API v2");
-    });
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Reframe API v1");
+    options.SwaggerEndpoint("/swagger/v2/swagger.json", "Reframe API v2");
+});
+
 
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<Reframe.Api.Infrastructure.ReframeDbContext>();
+    db.Database.EnsureCreated();
+}
 
 app.Run();
